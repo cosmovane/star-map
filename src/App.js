@@ -2,34 +2,41 @@ import React from 'react';
 import { Stage, Layer, Circle, Line } from 'react-konva';
 import { lineData, starData } from './data/data';
 import Tooltip from './components/Tooltip';
+import {
+  BACKGROUND_COLOR,
+  MAX_BACKGROUND_STARS,
+  STAR_COLORS,
+} from './constants/constants';
 
 // Random amount of stars to display in the background
-const starsAmount = Math.ceil(Math.random() * 1000 + 1000);
+const totalBackgroundStars = Math.ceil(
+  Math.random() * MAX_BACKGROUND_STARS + MAX_BACKGROUND_STARS
+);
 
-const ConstellationExplorer = () => {
+const OrionConstellation = () => {
   return (
     <div>
       <Stage
         width={window.outerWidth}
         height={window.outerHeight}
         style={{
-          background: '#030026',
+          background: BACKGROUND_COLOR,
         }}
       >
         <Layer>
           {/* Background stars */}
-          {Array.from({ length: starsAmount }, (_, index) => (
+          {Array.from({ length: totalBackgroundStars }, (_, index) => (
             <Circle
               key={index}
               x={Math.random() * window.outerWidth}
               y={Math.random() * window.outerHeight}
               radius={Math.random() * 1.5} // Random size for stars
-              fill='#FFFFFF'
+              fill={STAR_COLORS.WHITE}
               opacity={Math.random() * 0.5} // Random opacity for stars
             />
           ))}
 
-          {/* Lines connecting constelation stars */}
+          {/* Lines connecting constellation stars */}
           {lineData.map((line, index) => (
             <Line
               key={index}
@@ -39,7 +46,7 @@ const ConstellationExplorer = () => {
                 starData[line[1]].x,
                 starData[line[1]].y,
               ]}
-              stroke='white'
+              stroke={STAR_COLORS.WHITE}
               opacity={0.5}
             />
           ))}
@@ -70,4 +77,4 @@ const ConstellationExplorer = () => {
   );
 };
 
-export default ConstellationExplorer;
+export default OrionConstellation;
