@@ -25,7 +25,7 @@ const ConstellationExplorer = () => {
               y={Math.random() * window.outerHeight}
               radius={Math.random() * 1.5} // Random size for stars
               fill='#FFFFFF'
-              opacity={0.4}
+              opacity={Math.random() * 0.5} // Random opacity for stars
             />
           ))}
 
