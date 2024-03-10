@@ -1,7 +1,7 @@
 import React from 'react';
 import { Html } from 'react-konva-utils';
 
-export default function Tooltip({ children, text, ...rest }) {
+export default function Tooltip({ children, text }) {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
 
   const [show, setShow] = React.useState(false);
@@ -9,9 +9,9 @@ export default function Tooltip({ children, text, ...rest }) {
   const handleMouseMove = (event) => {
     // Get the mouse coordinates relative to the Stage and star
     const stage = event.target.getStage();
-    const pos = stage.getPointerPosition();
-    if (pos) {
-      setMousePosition({ x: pos.x, y: pos.y });
+    const position = stage.getPointerPosition();
+    if (position) {
+      setMousePosition({ x: position.x, y: position.y });
     }
   };
 

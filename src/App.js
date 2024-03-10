@@ -1,14 +1,12 @@
 import React from 'react';
 import { Stage, Layer, Circle, Line } from 'react-konva';
-import { lineData, starData } from './constants/data';
+import { lineData, starData } from './data/data';
 import Tooltip from './components/Tooltip';
 
-const starAmount = Math.ceil(Math.random() * 500 + 500);
+// Random amount of stars to display in the background
+const starsAmount = Math.ceil(Math.random() * 1000 + 1000);
 
 const ConstellationExplorer = () => {
-  // Random amount of stars to display (from 500-1000)
-  console.log('🚀 ~ starAmount', starAmount);
-
   return (
     <div>
       <Stage
@@ -20,7 +18,7 @@ const ConstellationExplorer = () => {
       >
         <Layer>
           {/* Background stars */}
-          {Array.from({ length: 1000 }, (_, index) => (
+          {Array.from({ length: starsAmount }, (_, index) => (
             <Circle
               key={index}
               x={Math.random() * window.outerWidth}
@@ -30,6 +28,8 @@ const ConstellationExplorer = () => {
               opacity={0.4}
             />
           ))}
+
+          {/* Lines connecting constelation stars */}
           {lineData.map((line, index) => (
             <Line
               key={index}
@@ -43,23 +43,24 @@ const ConstellationExplorer = () => {
               opacity={0.5}
             />
           ))}
+
+          {/* Stars */}
           {starData.map((star, index) => (
             <Tooltip key={index} text={star.name}>
-              {/* Create a semi-transparent circle behind the main circle */}
+              {/* Create a semi-transparent circle behind the main circle to simulate star's shine */}
               <Circle
                 x={star.x}
                 y={star.y}
-                radius={7}
-                fill='yellow'
+                radius={star.radius * 1.8}
+                fill={star.color}
                 opacity={0.3}
               />
               {/* Main circle representing the star */}
               <Circle
                 x={star.x}
                 y={star.y}
-                radius={4}
-                fill='yellow'
-                // onMouseEnter={(event) => handleMouseEnter(event, star.name)}
+                radius={star.radius}
+                fill={star.color}
               />
             </Tooltip>
           ))}
