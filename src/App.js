@@ -1,11 +1,13 @@
-import React from 'react';
-import { Stage, Layer, Circle, Line } from 'react-konva';
+import React, { useEffect, useState } from 'react';
+import { Stage, Layer, Circle, Line, Text } from 'react-konva';
 import { lineData, starData } from './data/data';
 import Tooltip from './components/Tooltip';
 import {
   BACKGROUND_COLOR,
   MAX_BACKGROUND_STARS,
   STAR_COLORS,
+  offset,
+  offsetY,
 } from './constants/constants';
 
 // Random amount of stars to display in the background
@@ -13,7 +15,29 @@ const totalBackgroundStars = Math.ceil(
   Math.random() * MAX_BACKGROUND_STARS + MAX_BACKGROUND_STARS
 );
 
+// TODO: Add README.md and belt stars data
+
 const OrionConstellation = () => {
+  const [stageWidth, setStageWidth] = useState(window.innerWidth);
+  const [stageHeight, setStageHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setStageWidth(window.innerWidth);
+      setStageHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Center coordinates relative to the stage
+  const centerX = stageWidth / 2 - offset;
+  const centerY = stageHeight / 2 - offsetY;
+
   return (
     <div>
       <Stage
@@ -25,6 +49,13 @@ const OrionConstellation = () => {
       >
         <Layer>
           {/* Background stars */}
+          <Text
+            x={10}
+            y={10}
+            text='Orion Constellation'
+            fill={STAR_COLORS.WHITE}
+            fontSize={25}
+          />
           {Array.from({ length: totalBackgroundStars }, (_, index) => (
             <Circle
               key={index}
@@ -41,10 +72,10 @@ const OrionConstellation = () => {
             <Line
               key={index}
               points={[
-                starData[line[0]].x,
-                starData[line[0]].y,
-                starData[line[1]].x,
-                starData[line[1]].y,
+                starData[line[0]].x + centerX,
+                starData[line[0]].y + centerY,
+                starData[line[1]].x + centerX,
+                starData[line[1]].y + centerY,
               ]}
               stroke={STAR_COLORS.WHITE}
               opacity={0.5}
@@ -53,19 +84,19 @@ const OrionConstellation = () => {
 
           {/* Stars */}
           {starData.map((star, index) => (
-            <Tooltip key={index} text={star.name}>
+            <Tooltip key={index} title={star.name} description={star.class}>
               {/* Create a semi-transparent circle behind the main circle to simulate star's shine */}
               <Circle
-                x={star.x}
-                y={star.y}
+                x={star.x + centerX}
+                y={star.y + centerY}
                 radius={star.radius * 1.8}
                 fill={star.color}
                 opacity={0.3}
               />
               {/* Main circle representing the star */}
               <Circle
-                x={star.x}
-                y={star.y}
+                x={star.x + centerX}
+                y={star.y + centerY}
                 radius={star.radius}
                 fill={star.color}
               />

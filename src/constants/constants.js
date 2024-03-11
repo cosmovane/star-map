@@ -19,5 +19,7 @@ export const STAR_COLORS = {
   WHITE: 'rgb(255, 255, 255)',
   DEFAULT: 'rgb(255, 255, 0)',
 };
-
 export const BACKGROUND_COLOR = 'rgb(2, 1, 31)';
+
+export const offset = 200; // Offset to center the constellation in the canvas
+export const offsetY = 225; // Offset to center the constellation in the canvas
