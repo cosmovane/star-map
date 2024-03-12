@@ -52,7 +52,7 @@ const OrionConstellation = () => {
           <Text
             x={10}
             y={10}
-            text='Orion Constellation'
+            text='Constelacion de Orion'
             fill={STAR_COLORS.WHITE}
             fontSize={25}
           />
