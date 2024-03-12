@@ -30,22 +30,22 @@ export const starData = [
   {
     x: 370 - offset,
     y: 625 - offset,
-    radius: BASE_STAR_RADIUS,
-    color: STAR_COLORS.DEFAULT,
+    radius: BASE_STAR_RADIUS + 2.05,
+    color: STAR_COLORS.K13831,
     name: 'Alnitak',
   }, // Estrella izquierda del cinturon
   {
     x: 420 - offset,
     y: 595 - offset,
-    radius: BASE_STAR_RADIUS,
-    color: STAR_COLORS.DEFAULT,
+    radius: BASE_STAR_RADIUS + 1.7,
+    color: STAR_COLORS.K13348,
     name: 'Alnilam',
   }, // Estrella central del cinturon
   {
     x: 480 - offset,
     y: 555 - offset,
-    radius: BASE_STAR_RADIUS,
-    color: STAR_COLORS.DEFAULT,
+    radius: BASE_STAR_RADIUS + 2.23,
+    color: STAR_COLORS.K14087,
     name: 'Mintaka',
   }, // Estrella derecha del cinturon
   {
