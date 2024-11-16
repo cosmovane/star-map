@@ -1,12 +1,12 @@
 # Vane's Star Map
 
-## Constelacion de Orion
+## Orion Constellation
 
-En este proyecto podes aprender acerca de la constelacion de Orion que veras en un canvas HTML.
-Al hacer hover sobre las estrellas de la constelacion, podras ver el nombre de la estrella y clase.
+In this project you can learn about the Orion constellation.
+By hovering over the stars in the constellation, you can see the name of the star and its class.
 
-El color de la estrella coresponde al color que esta dado por la temperatura de su superficie. El tamaño de las estrellas corresponde a la magnitud visual de estas.
+The color of the star corresponds to the color given by the temperature of its surface. The size of the stars corresponds to their visual magnitude.
 
-**Enlace: https://cosmovane.github.io/star-map/**
+**Link: https://cosmovane.github.io/star-map/**
 
-_NOTA:_ Visitar la pagina web desde una computadora o laptop.
+_NOTE:_ Visit the website from a computer or laptop.

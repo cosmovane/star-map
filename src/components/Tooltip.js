@@ -1,7 +1,7 @@
 import React from 'react';
 import { Html } from 'react-konva-utils';
 
-export default function Tooltip({ children, title, description }) {
+export default function Tooltip({ children, title, description, temperature }) {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
 
   const [show, setShow] = React.useState(false);
@@ -35,6 +35,7 @@ export default function Tooltip({ children, title, description }) {
         >
           <div style={{ fontSize: '20px' }}>{title}</div>
           <div style={{ fontSize: '15px' }}>{description}</div>
+          <div style={{ fontSize: '15px' }}>{temperature}</div>
         </div>
       </Html>
       <div

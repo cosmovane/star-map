@@ -52,9 +52,16 @@ const OrionConstellation = () => {
           <Text
             x={10}
             y={10}
-            text='Constelacion de Orion'
+            text='Orion Constellation'
             fill={STAR_COLORS.WHITE}
             fontSize={25}
+          />
+          <Text
+            x={10}
+            y={40}
+            text='Hover over any star to see more information'
+            fill={STAR_COLORS.WHITE}
+            fontSize={15}
           />
           {Array.from({ length: totalBackgroundStars }, (_, index) => (
             <Circle
@@ -84,7 +91,12 @@ const OrionConstellation = () => {
 
           {/* Stars */}
           {starData.map((star, index) => (
-            <Tooltip key={index} title={star.name} description={star.class}>
+            <Tooltip
+              key={index}
+              title={star.name}
+              description={star.class}
+              temperature={star.temperature}
+            >
               {/* Create a semi-transparent circle behind the main circle to simulate star's shine */}
               <Circle
                 x={star.x + centerX}
